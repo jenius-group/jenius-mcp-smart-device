@@ -1,0 +1,16 @@
+[project]
+name = "jenius-mcp-smart-device"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp[cli]>=1.9.4",
+    "pydantic>=2.11.7",
+    "pyyaml>=6.0.2",
+    "requests>=2.32.4",
+]
+
+# 镜像设置
+[tool.uv]
+index-url = "https://mirrors.aliyun.com/pypi/simple/"
