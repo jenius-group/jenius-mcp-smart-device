@@ -1,7 +1,3 @@
-# Jenius MCP Smart Device
-
-> [English version](README_EN.md)
-
 ## **Jenius** 支持的智能家居控制工具
 
 [Jenius](https://www.jenius.cn/) 是由 **天聚地合（苏州）科技股份有限公司** 自主研发的 **通用多智能体 AI Agent**，通过深度融合多智能体协作架构与实时数据服务能力，致力于实现从 “需求理解” 到 “精准执行” 的全链路闭环。Jenius 独创 “**数据+智能体+RPA**” 三角引擎，依托天聚地合旗下聚合数据平台的海量资源与自研RPA技术，专注于解决复杂场景的深度服务需求，尤其在旅游行程规划、营销活动生成、报表分析等垂直领域展现惊艳的执行力。
@@ -20,8 +16,10 @@
 ├── utils/                   # 工具函数
 ├── img/                     # 项目图片
 ├── .mcp.env                 # MCP环境配置
+├── Dockerfile               # Docker 构建文件
 ├── mcp_server.tpl           # MCP服务器模板
 ├── pyproject.toml           # Python项目配置
+├── requirements.txt         # Python依赖文件
 └── uv.lock                  # UV依赖锁定文件
 ```
 

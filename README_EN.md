@@ -18,8 +18,10 @@ A smart home control tool supported by **Jenius**.
 ├── utils/                   # Utility functions
 ├── img/                     # Project images
 ├── .mcp.env                 # MCP environment configuration
+├── Dockerfile               # Docker build configuration
 ├── mcp_server.tpl           # MCP server template
 ├── pyproject.toml           # Python project configuration
+├── requirements.txt         # Python dependency requirements
 └── uv.lock                  # UV dependency lock file
 ```
 
