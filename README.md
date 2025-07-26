@@ -2,6 +2,10 @@
 
 [Jenius](https://www.jenius.cn/) 是由 **天聚地合（苏州）科技股份有限公司** 自主研发的 **通用多智能体 AI Agent**，通过深度融合多智能体协作架构与实时数据服务能力，致力于实现从 “需求理解” 到 “精准执行” 的全链路闭环。Jenius 独创 “**数据+智能体+RPA**” 三角引擎，依托天聚地合旗下聚合数据平台的海量资源与自研RPA技术，专注于解决复杂场景的深度服务需求，尤其在旅游行程规划、营销活动生成、报表分析等垂直领域展现惊艳的执行力。
 
+<a href="https://glama.ai/mcp/servers/@jenius-group/jenius-mcp-smart-device">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@jenius-group/jenius-mcp-smart-device/badge" alt="Jenius Smart Device MCP server" />
+</a>
+
 # 项目结构
 
 ```bash
