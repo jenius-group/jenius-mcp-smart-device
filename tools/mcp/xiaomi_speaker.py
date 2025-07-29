@@ -39,7 +39,7 @@ from utils.error import error_json_msg
 # Global vairables #
 ####################
 CONTROL_CENTER_BASE_URL = os.getenv('CONTROL_CENTER_BASE_URL')
-CONTROL_CENTER__HEADERS = json.loads(os.getenv('CONTROL_CENTER__HEADERS'))
+CONTROL_CENTER_HEADERS = json.loads(os.getenv('CONTROL_CENTER_HEADERS'))
 SLEEPMODE_SWITCH_ENTITY_ID = os.getenv('XIAOMI_SPEAKER_SLEEPMODE_SWITCH_ENTITY_ID')
 MUTE_SWITCH_ENTITY_ID = os.getenv('XIAOMI_SPEAKER_MUTE_SWITCH_ENTITY_ID')
 VOLUME_ADJUST_ENTITY_ID = os.getenv('XIAOMI_SPEAKER_VOLUME_ADJUST_ENTITY_ID')
@@ -61,6 +61,7 @@ async def switch_sleep_mode(
     """
     控制小米AI音箱睡眠模式的开关流程。请根据用户的需求抽取参数，控制设备。
     """
+
     response_json = dict()
 
     try:
@@ -76,7 +77,7 @@ async def switch_sleep_mode(
             "entity_id": SLEEPMODE_SWITCH_ENTITY_ID
         }
         # HTTP request
-        response = requests.post(request_url, headers=CONTROL_CENTER__HEADERS, json=data)
+        response = requests.post(request_url, headers=CONTROL_CENTER_HEADERS, json=data)
         response.raise_for_status()
         if response.status_code == 200:
             response_json['message'] = f"操作成功！"
@@ -100,6 +101,7 @@ async def mute(
     """
     控制小米AI音箱扬声器的静音开关的流程。请根据用户的需求抽取参数，控制设备。
     """
+
     response_json = dict()
 
     try:
@@ -115,7 +117,7 @@ async def mute(
             "entity_id": MUTE_SWITCH_ENTITY_ID
         }
         # HTTP request
-        response = requests.post(request_url, headers=CONTROL_CENTER__HEADERS, json=data)
+        response = requests.post(request_url, headers=CONTROL_CENTER_HEADERS, json=data)
         response.raise_for_status()
         if response.status_code == 200:
             response_json['message'] = f"操作成功！"
@@ -139,6 +141,7 @@ async def adjust_volume(
     """
     控制小米AI音箱的音量的流程。请根据用户的需求抽取参数，控制设备。
     """
+
     response_json = dict()
 
     try:
@@ -155,7 +158,7 @@ async def adjust_volume(
             "value": volume
         }
         # HTTP request
-        response = requests.post(request_url, headers=CONTROL_CENTER__HEADERS, json=data)
+        response = requests.post(request_url, headers=CONTROL_CENTER_HEADERS, json=data)
         response.raise_for_status()
         if response.status_code == 200:
             response_json['message'] = f"操作成功！"
@@ -211,7 +214,7 @@ async def speaker_button(
             "entity_id": ENTITY_ID
         }
         # HTTP request
-        response = requests.post(request_url, headers=CONTROL_CENTER__HEADERS, json=data)
+        response = requests.post(request_url, headers=CONTROL_CENTER_HEADERS, json=data)
         response.raise_for_status()
         if response.status_code == 200:
             response_json['message'] = f"操作成功！"

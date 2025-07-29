@@ -10,7 +10,7 @@
 ├── Home Assistant Guide.md  # Home Assistant 搭建指南
 ├── jenius_mcp.py            # MCP服务主入口
 ├── tools/                   # MCP工具集
-│   ├── __init__.py
+│   ├── __init__.py          # MCP工具集初始化文件
 │   ├── common.py            # 通用工具函数
 │   └── mcp/                 # MCP具体实现
 ├── utils/                   # 工具函数
@@ -43,12 +43,12 @@ JENIUS_SMART_DEVICE_MCP_HOST = 127.0.0.1
 JENIUS_SMART_DEVICE_MCP_TRANSPORT = stdio
 
 # 如果使用SSE方式，则配置下面这些
-JENIUS_SMART_DEVICE_MCP_SSE_PORT = 8981
+JENIUS_SMART_DEVICE_MCP_SSE_PORT = YOUR_SSE_PORT
 JENIUS_SMART_DEVICE_MCP_SSE_PATH = "/sse"
 JENIUS_SMART_DEVICE_MCP_MESSAGE_PATH = "/messages/"
 ```
 
-Home Assistant 控制中心环境配置：
+**Home Assistant** 控制中心环境配置：
 
 ```bash
 # 智能家居控制中心URL配置
@@ -64,11 +64,15 @@ CONTROL_CENTER__HEADERS = {"Authorization": YOUR_HOME_ASSISTANT_API_KEY, "Conten
 # 小米空气净化器控制
 XIAOMI_AIR_PURIFIER_SWITCH_ENTITY_ID = "switch.zhimi_cn_495307311_rma1_on_p_2_1"
 XIAOMI_AIR_PURIFIER_MODE_SELECT_ENTITY_ID = "select.zhimi_cn_495307311_rma1_mode_p_2_4"
-...
 
 # 小米智能音箱控制
 XIAOMI_SPEAKER_SLEEPMODE_SWITCH_ENTITY_ID = "switch.xiaomi_cn_58102534_s12_sleep_mode_p_5_3"
 XIAOMI_SPEAKER_MUTE_SWITCH_ENTITY_ID = "switch.xiaomi_cn_58102534_s12_mute_p_2_2"
+
+# Roborock T7 扫地机器人控制
+...
+
+# 小米智能摄像头控制
 ...
 ```
 
@@ -116,17 +120,19 @@ uv run jenius_mcp.py --host 0.0.0.0 --port 8981 --transport sse
 
 # SSE 模式
 "smart_home_server": {
-    "url": "http://127.0.0.1:8981/sse",
+    "url": "http://0.0.0.0:8981/sse",
     "transport": "sse"
 }
 ```
 
 # 已支持的终端
 
-- 米家空气净化器4 Lite
+- 米家空气净化器 4 Lite
 - 小米AI音箱
+- 米家 Roborock T7 扫地机器人
+- 小米智能摄像机
 
-**米家空气净化器4 Lite** 和 **小米AI音箱** 可通过在环境配置文件中简单替换您的*设备实体标识符*进行快速接入。设备实体标识符的获取请参考 [Home Assistant 搭建指南](Home%20Assistant%20Guide.md) 的 **第四** 部分。
+所有 **米家智能设备** 可通过在环境配置文件中简单替换您的 *设备实体标识符* 进行快速接入。设备实体标识符的获取请参考 [Home Assistant 搭建指南](Home%20Assistant%20Guide.md) 的 **第四** 部分。
 
 - 智能插座 SmartHW MF287
 

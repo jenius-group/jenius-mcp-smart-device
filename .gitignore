@@ -234,5 +234,6 @@ gcp-login.json
 *.jsonl
 config_test.py
 uv.lock
+.mcp.env
 
 !requirements.txt

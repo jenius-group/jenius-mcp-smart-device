@@ -12,26 +12,34 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
-# Jenius MCP smart device Server Entry Point
+
+##############################################
+# Jenius MCP smart device Server Entry Point # 
+##############################################
+
 
 import os
 import asyncio
 import argparse
 from typing import Any
-from tools.common import mcp
 from dotenv import load_dotenv
-from utils.logger import logger
 
-# 清除所有环境变量
+
+# Clear all existing environment variables
 os.environ.clear()
 
-# 重新加载环境变量
+# Load environment variables from .mcp.env file
 load_dotenv(dotenv_path=".mcp.env")
 
-# 验证环境变量加载
-# logger.info("当前所有环境变量：")
+# Validate and log all environment variables
+# print("Loaded environment variables:")
 # for key, value in os.environ.items():
-#     logger.info(f"{key}: {value}")
+#     print(f"{key}: {value}")
+
+
+from tools.common import mcp
+from utils.logger import logger
+
 
 if __name__ == "__main__":
     # 创建命令行参数解析器

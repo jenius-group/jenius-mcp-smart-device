@@ -12,7 +12,7 @@ A smart home control tool supported by **Jenius**.
 ├── Home Assistant Guide.md  # Guide for setting up Home Assistant
 ├── jenius_mcp.py            # Main entry point of the MCP server
 ├── tools/                   # MCP toolkit
-│   ├── __init__.py
+│   ├── __init__.py          # MCP toolkit initialization
 │   ├── common.py            # Common utility functions
 │   └── mcp/                 # MCP core implementation
 ├── utils/                   # Utility functions
@@ -46,12 +46,12 @@ JENIUS_SMART_DEVICE_MCP_HOST = 127.0.0.1
 JENIUS_SMART_DEVICE_MCP_TRANSPORT = stdio
 
 # If using SSE protocol, configure the following:
-JENIUS_SMART_DEVICE_MCP_SSE_PORT = 8981
+JENIUS_SMART_DEVICE_MCP_SSE_PORT = YOUR_SSE_PORT
 JENIUS_SMART_DEVICE_MCP_SSE_PATH = "/sse"
 JENIUS_SMART_DEVICE_MCP_MESSAGE_PATH = "/messages/"
 ```
 
-Home Assistant Control Center Configuration:
+**Home Assistant** Control Center Configuration:
 
 ```bash
 # Base URL of the control center
@@ -64,14 +64,18 @@ CONTROL_CENTER__HEADERS = {"Authorization": YOUR_HOME_ASSISTANT_API_KEY, "Conten
 Smart Device Configuration:
 
 ```bash
-# Xiaomi Air Purifier control
+# Mi Air Purifier control
 XIAOMI_AIR_PURIFIER_SWITCH_ENTITY_ID = "switch.zhimi_cn_495307311_rma1_on_p_2_1"
 XIAOMI_AIR_PURIFIER_MODE_SELECT_ENTITY_ID = "select.zhimi_cn_495307311_rma1_mode_p_2_4"
-...
 
-# Xiaomi Smart Speaker control
+# Mi Smart Speaker control
 XIAOMI_SPEAKER_SLEEPMODE_SWITCH_ENTITY_ID = "switch.xiaomi_cn_58102534_s12_sleep_mode_p_5_3"
 XIAOMI_SPEAKER_MUTE_SWITCH_ENTITY_ID = "switch.xiaomi_cn_58102534_s12_mute_p_2_2"
+
+# Mi Roborock T7 Robot Vacuum
+...
+
+# Xiaomi smart camera
 ...
 ```
 
@@ -119,7 +123,7 @@ You can configure MCP server connections using clients like `Cline` or `Claude D
 
 # SSE mode
 "smart_home_server": {
-    "url": "http://127.0.0.1:8981/sse",
+    "url": "http://0.0.0.0:8981/sse",
     "transport": "sse"
 }
 ```
@@ -127,9 +131,11 @@ You can configure MCP server connections using clients like `Cline` or `Claude D
 # Supported Devices
 
 * Mi Air Purifier 4 Lite
-* Xiaomi AI Speaker
+* Mi AI Speaker
+* Mi Roborock T7 Robot Vacuum
+* Xiaomi Smart Camera
 
-**Mi Air Purifier 4 Lite** and **Xiaomi AI Speaker** can be integrated simply by replacing the *entity IDs* in the environment configuration file. Refer to **Section 4** of the [Home Assistant Setup Guide](Home%20Assistant%20Guide.md) for instructions on obtaining these IDs.
+All devices from **Mi** or **Xiaomi** can be integrated simply by replacing the *entity IDs* in the environment configuration file. Refer to **Section 4** of the [Home Assistant Setup Guide](Home%20Assistant%20Guide.md) for instructions on obtaining these IDs.
 
 * Smart Socket: SmartHW MF287
 

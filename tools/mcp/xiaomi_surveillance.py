@@ -25,10 +25,10 @@ from utils.error import error_json_msg
 
 """
 
-    本MCP服务器用于控制小米空气净化器的开关机和模式切换，包含以下两个功能：
+    本MCP服务器用于控制小米智能摄像机的开关机和夜视模式切换，包含以下两个功能：
 
-        1. switch_air_purifier() # 开关机
-        2. mode_air_purifier()   # 模式切换
+        1. switch_xiaomi_smart_surveillance()            # 开关机
+        2. night_vision_mode_xiaomi_smart_surveillance() # 夜视模式切换
 
 """
 
@@ -38,19 +38,19 @@ from utils.error import error_json_msg
 ####################
 CONTROL_CENTER_BASE_URL = os.getenv('CONTROL_CENTER_BASE_URL')
 CONTROL_CENTER_HEADERS = json.loads(os.getenv('CONTROL_CENTER_HEADERS'))
-SWITCH_ENTITY_ID = os.getenv('XIAOMI_AIR_PURIFIER_SWITCH_ENTITY_ID')
-MODE_SELECT_ENTITY_ID = os.getenv('XIAOMI_AIR_PURIFIER_MODE_SELECT_ENTITY_ID')
+SWITCH_ENTITY_ID = os.getenv('XIAOMI_SMART_SURVEILLANCE_SWITCH_ENTITY_ID')
+MODE_SELECT_ENTITY_ID = os.getenv('XIAOMI_SMART_SURVEILLANCE_NIGHT_VISION_MODE_SELECT_ENTITY_ID')
 
 
 ###############
 # MCP servers #
 ###############
 @mcp.tool()
-async def switch_air_purifier(
+async def switch_xiaomi_smart_surveillace(
     action: Literal["turn_on", "turn_off"] = Field(description="要执行的操作类型: 打开或者关闭。必须从两个选项中选择一个"), 
 ) -> str:
     """
-    控制空气净化器的开关机流程。请根据用户的需求抽取参数，控制设备。
+    控制小米智能摄像机的开关机流程。请根据用户的需求抽取参数，控制设备。
     """
 
     response_json = dict()
@@ -86,11 +86,11 @@ async def switch_air_purifier(
 
 
 @mcp.tool()
-async def mode_air_purifier(
-    mode: Literal["睡眠", "自动", "最爱"] = Field(description="空气净化器的运行模式，从三个模式:睡眠、自动、最爱当中选择一个")
+async def mode_xiaomi_smart_surveillance(
+    mode: Literal["Off", "Auto", "On"] = Field(description="智能摄像机的运行模式，从三个模式:Off、Auto、On当中选择一个")
 ) -> str:
     """
-    控制空气净化器运行模式的流程。请根据用户的需求抽取参数，控制设备。
+    控制小米智能摄像机夜视模式的流程。请根据用户的需求抽取参数，控制设备。
     """
 
     response_json = dict()
@@ -99,8 +99,8 @@ async def mode_air_purifier(
     try:
 
         # Sanity check
-        if mode not in ['睡眠', '自动', '最爱']:
-            return error_json_msg('不支持的运行模式。仅支持 睡眠, 自动, 最爱。请核对后重新输入。')
+        if mode not in ['Off', 'Auto', 'On']:
+            return error_json_msg('不支持的运行模式。仅支持 Off, Auto, On。请核对后重新输入。')
         logger.info(f"Current mode: {mode}")
         # Request body formation
         domain = MODE_SELECT_ENTITY_ID.split(".")[0]
